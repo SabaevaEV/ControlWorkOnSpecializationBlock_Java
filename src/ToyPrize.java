@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class ToyStore {
+public class ToyPrize {
     private List<Toy> toys;
     int toysCount = 0;
 
-    public ToyStore() {
+    public ToyPrize() {
         toys = new ArrayList<>();
         toysCount = 0;
     }

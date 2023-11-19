@@ -3,25 +3,25 @@ import java.util.TimerTask;
 
 public class Main {
     public static void main(String[] args) {
-        ToyStore toyStore = new ToyStore();
+        ToyPrize toyPrize = new ToyPrize();
 
-        toyStore.addToy(new Toy(1, "Кукла", 5, 30));
-        toyStore.addToy(new Toy(2, "Мяч", 10, 20));
-        toyStore.addToy(new Toy(3, "Машинка", 8, 15));
+        toyPrize.addToy(new Toy(1, "Кукла", 5, 30));
+        toyPrize.addToy(new Toy(2, "Мяч", 10, 20));
+        toyPrize.addToy(new Toy(3, "Машинка", 8, 15));
 
-        toyStore.updateWeight(1, 40);
+        toyPrize.updateWeight(1, 40);
 
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                Toy prizeToy = toyStore.selectPrizeToy();
+                Toy prizeToy = toyPrize.selectPrizeToy();
                 if (prizeToy != null) {
-                    toyStore.savePrizeToyToFile(prizeToy);
+                    toyPrize.savePrizeToyToFile(prizeToy);
                 }
 
-                toyStore.toysCount++;
-                if (toyStore.toysCount >= 10) {
+                toyPrize.toysCount++;
+                if (toyPrize.toysCount >= 10) {
                     timer.cancel();
                 }
             }
