@@ -1,17 +1,30 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        ToyStore toyStore = new ToyStore();
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        toyStore.addToy(new Toy(1, "Кукла", 5, 30));
+        toyStore.addToy(new Toy(2, "Мяч", 10, 20));
+        toyStore.addToy(new Toy(3, "Машинка", 8, 15));
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+        toyStore.updateWeight(1, 40);
+
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Toy prizeToy = toyStore.selectPrizeToy();
+                if (prizeToy != null) {
+                    toyStore.savePrizeToyToFile(prizeToy);
+                }
+
+                toyStore.toysCount++;
+                if (toyStore.toysCount >= 10) {
+                    timer.cancel();
+                }
+            }
+        }, 0, 1000);
     }
 }
