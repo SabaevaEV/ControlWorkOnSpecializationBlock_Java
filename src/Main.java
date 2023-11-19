@@ -6,8 +6,8 @@ public class Main {
         ToyPrize toyPrize = new ToyPrize();
 
         toyPrize.addToy(new Toy(1, "Кукла", 5, 30));
-        toyPrize.addToy(new Toy(2, "Мяч", 10, 20));
-        toyPrize.addToy(new Toy(3, "Машинка", 8, 15));
+        toyPrize.addToy(new Toy(2, "Конструктор", 10, 20));
+        toyPrize.addToy(new Toy(3, "Робот", 8, 15));
 
         toyPrize.updateWeight(1, 40);
 
